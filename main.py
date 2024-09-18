@@ -461,8 +461,8 @@ def train_model(model, train_loader, optimizer, epoch):
                     print(f"[Epoch {epoch+1}, Batch {batch_idx+1}, Sample {i+1}] Warning: One-to-one correspondence violated.")
 
 
-                if batch_idx % 10 == 0:  # Visualize only in the first two epochs to reduce overhead
-                    visualize_correspondences(img1_np, img2_np, kp1, kp2_transformed, predicted_correspondence.tolist(), epoch, i+1)
+                # if batch_idx % 10 == 0:  # Visualize only in the first two epochs to reduce overhead
+                #     visualize_correspondences(img1_np, img2_np, kp1, kp2_transformed, predicted_correspondence.tolist(), epoch, i+1)
 
         if valid_pairs > 0:
             batch_loss = batch_loss / valid_pairs
@@ -516,9 +516,9 @@ def test_model(model, test_loader, epoch):
                 for r, c in zip(row_ind, col_ind):
                     if r < S_final_np.shape[0] and c < S_final_np.shape[1]:
                         predicted_correspondence[r] = c
-                if kk_once:
-                    visualize_correspondences(img1_np, img2_np, kp1, kp2_transformed, predicted_correspondence.tolist(), epoch, i+1)
-                    kk_once = False
+                # if kk_once:
+                #     visualize_correspondences(img1_np, img2_np, kp1, kp2_transformed, predicted_correspondence.tolist(), epoch, i+1)
+                #     kk_once = False
             if num_examples >= 1000:
                 break
         if num_examples >= 1000:
